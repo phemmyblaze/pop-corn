@@ -280,6 +280,10 @@ body {
   gap: 0.8rem;
 }
 
+.height {
+  height: 30rem;
+}
+
 .rating {
   background-color: var(--color-background-100);
   border-radius: 0.9rem;
