@@ -52,19 +52,30 @@ const tempWatchedData = [
 ];
 
 const KEY = "b3b0c3a4";
-const QUERY = "hello";
+const tempQuery = "hello";
 
 export default function App() {
+	const [query, setQuery] = useState("");
 	const [movies, setMovies] = useState([]);
 	const [watched, setWatched] = useState([]);
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState("");
 
+	// useEffect(() => {
+	// 	console.log("A");
+	// }, []);
+	// useEffect(() => {
+	// 	console.log("B");
+	// });
+
+	// console.log("C");
+
 	useEffect(() => {
 		async function fetchMovie() {
 			try {
 				setLoading(true);
-				const res = await fetch(`http://www.omdbapi.com/?i=tt3896198&apikey=${KEY}&s=${QUERY}`);
+				setError("");
+				const res = await fetch(`http://www.omdbapi.com/?i=tt3896198&apikey=${KEY}&s=${query}`);
 
 				if (!res.ok) throw new Error("Something went wrong with fetching movies");
 
@@ -81,13 +92,20 @@ export default function App() {
 				setLoading(false);
 			}
 		}
+
+		if (query.length < 3) {
+			setMovies(tempMovieData);
+			setError("");
+			return;
+		}
+
 		fetchMovie();
-	}, []);
+	}, [query]);
 	return (
 		<>
 			<NavBar>
 				<Logo />
-				<Search />
+				<Search query={query} setQuery={setQuery} />
 				<Result movies={movies} />
 			</NavBar>
 
