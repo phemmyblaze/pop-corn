@@ -52,7 +52,7 @@ const tempWatchedData = [
 ];
 
 const KEY = "b3b0c3a4";
-const QUERY = "hcbcbbcbbc";
+const QUERY = "hello";
 
 export default function App() {
 	const [movies, setMovies] = useState([]);
@@ -94,9 +94,7 @@ export default function App() {
 			<Main>
 				<Box>
 					{/* {loading ? <Loader /> : <MovieList movies={movies} />} */}
-					{loading && <Loader />}
-					{!loading && !error && <MovieList movies={movies} />}
-					{error && <ErrorMessage message={error} />}
+					{loading ? <Loader /> : !error ? <MovieList movies={movies} /> : <ErrorMessage message={error} />}
 				</Box>
 				<Box>
 					<WatchedSum watched={watched} />
