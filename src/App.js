@@ -60,6 +60,7 @@ export default function App() {
 	const [watched, setWatched] = useState([]);
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState("");
+	const [selectedId, setSelectedId] = useState(null);
 
 	// useEffect(() => {
 	// 	console.log("A");
@@ -115,8 +116,14 @@ export default function App() {
 					{loading ? <Loader /> : !error ? <MovieList movies={movies} /> : <ErrorMessage message={error} />}
 				</Box>
 				<Box>
-					<WatchedSum watched={watched} />
-					<WatchedList watched={watched} />
+					{selectedId ? (
+						<SelectedMovies selectedId={selectedId} />
+					) : (
+						<>
+							<WatchedSum watched={watched} />
+							<WatchedList watched={watched} />
+						</>
+					)}
 				</Box>
 			</Main>
 		</>
@@ -133,4 +140,8 @@ function ErrorMessage({ message }) {
 			<span>⛔</span> {message}
 		</p>
 	);
+}
+
+function SelectedMovies({ selectedId }) {
+	return <div className="details">{selectedId}</div>;
 }
