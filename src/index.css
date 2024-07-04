@@ -392,10 +392,6 @@ EMPTY STAR
     height: auto;
   }
 
-  .num-results {
-    text-align: center;
-  }
-
   /* .box {
     width: 30rem;
   } */
@@ -405,6 +401,26 @@ EMPTY STAR
   }
 }
 
-@media (min-width: 768px) {
+@media (max-width: 500px) {
+  .nav-bar {
+    grid-template-columns: 1fr;
+    width: 36rem;
+    gap: 3px
+  }
 
+  .num-results {
+    text-align: left;
+  }
+
+  .search { 
+    width: 27rem;
+  }
+  .main {
+    flex-direction: column;
+    /* align-items: center; */
+  }
+
+  .box {
+    width: 35rem;
+  }
 }
