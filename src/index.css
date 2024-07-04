@@ -137,7 +137,7 @@ body {
 
 .list {
   list-style: none;
-  padding: 0.8rem 0;
+  padding: 3.8rem 0;
   height: auto;
   /* overflow: scroll; */
 }
@@ -384,3 +384,27 @@ EMPTY STAR
 </svg>
 
 */
+
+@media (max-width: 768px) {
+  .nav-bar {
+    grid-template-columns: 1fr 1fr;
+    padding: 1rem 3rem;
+    height: auto;
+  }
+
+  .num-results {
+    text-align: center;
+  }
+
+  /* .box {
+    width: 30rem;
+  } */
+
+  .summary div {
+    flex-wrap: wrap;
+  }
+}
+
+@media (min-width: 768px) {
+
+}
